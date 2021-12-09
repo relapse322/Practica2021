@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Advocatscaya_contora
+{
+    public partial class Form5 : Form
+    {
+        public Form5()
+        {
+            InitializeComponent();
+        }
+
+        private void uslugiBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.uslugiBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dataSet1);
+
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet1.Uslugi". При необходимости она может быть перемещена или удалена.
+            this.uslugiTableAdapter.Fill(this.dataSet1.Uslugi);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            uslugiBindingSource.AddNew();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            uslugiBindingSource.EndEdit();
+            uslugiTableAdapter.Update(dataSet1);
+        }
+    }
+}
