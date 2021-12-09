@@ -1,0 +1,46 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Advocatscaya_contora
+{
+    public partial class Form4 : Form
+    {
+        public Form4()
+        {
+            InitializeComponent();
+        }
+
+        private void sud_ZasedaniyaBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.sud_ZasedaniyaBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.dataSet1);
+
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "dataSet1.Sud_Zasedaniya". При необходимости она может быть перемещена или удалена.
+            this.sud_ZasedaniyaTableAdapter.Fill(this.dataSet1.Sud_Zasedaniya);
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            sud_ZasedaniyaBindingSource.AddNew();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            sud_ZasedaniyaBindingSource.EndEdit();
+            sud_ZasedaniyaTableAdapter.Update(dataSet1);
+        }
+    }
+}
